@@ -1,5 +1,6 @@
 import React from "react";
 import { Arrow, Group, Line, Rect, Text } from "react-konva";
+import useImage from "use-image";
 
 function BottomShape({
   xCordinateRightShape,
@@ -8,6 +9,8 @@ function BottomShape({
   bPlas,
   width,
 }) {
+  const url = "rect.png";
+  const [image] = useImage(url);
   return (
     <Group>
       <Line
@@ -39,6 +42,7 @@ function BottomShape({
         height={54}
         stroke={"blue"}
         strokeWidth={4}
+        fillPatternImage={image}
       />
       <Text x={555} y={510} text={"b"} fontSize={40} />
     </Group>

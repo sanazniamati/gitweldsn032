@@ -33,14 +33,12 @@ export default function UButtOnVRoot() {
   let e = 422;
   let s = 600;
   let t = 875;
-  const [grad, setGrad] = useState(45);
+  const [grad, setGrad] = useState(15);
   let initialT1 = e - bRightShape;
   let initiala = 10 * Math.cos((grad * Math.PI) / 180);
-  let initialX = initialT1 * Math.tan((grad * Math.PI) / 180) + 597;
-  let xAdditinalLine =
-    initialT1 * Math.tan((grad * Math.PI) / 180) +
-    Math.sin((grad * Math.PI) / 180) +
-    625;
+  let initialX = initialT1 * Math.tan((grad * Math.PI) / 180) + s;
+  let xAdditinalLine = initialX + 65 * Math.tan((grad * Math.PI) / 180);
+
   const handleMouseMove = (e) => {
     const stage = e.target.getStage();
     const pointerPosition = stage.getPointerPosition();
@@ -72,6 +70,7 @@ export default function UButtOnVRoot() {
     setGrad(grad + 5);
     console.log("grad" + grad);
     console.log("xAdditinalLine" + xAdditinalLine);
+    console.log("initialx" + initialX);
   };
   const handelDecBeta = () => {
     setGrad(grad - 5);
