@@ -118,6 +118,9 @@ export default function UButtOnVRoot() {
             hRightShape={hRightShape}
             jRightShape={jRightShape}
             kRightShape={kRightShape}
+            yBetaBigLine={yBetaBigLine}
+            xAdditinalLine={xAdditinalLine}
+            initiala={initiala}
           />
           <BottomShape
             xCordinateRightShape={xCordinateRightShape}

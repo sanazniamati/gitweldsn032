@@ -11,7 +11,11 @@ function RightShape({
   hRightShape,
   jRightShape,
   kRightShape,
+  yBetaBigLine,
+  xAdditinalLine,
+  initiala,
 }) {
+  const xcurveLine = xAdditinalLine - 597;
   return (
     <Group>
       <Shape
@@ -68,16 +72,16 @@ function RightShape({
       {/*  stroke={"red"}*/}
       {/*  strokeWidth={13}*/}
       {/*/>*/}
-      {/*<Shape*/}
-      {/*  sceneFunc={(context, shape) => {*/}
-      {/*    context.beginPath();*/}
-      {/*    context.moveTo(595, 156);*/}
-      {/*    context.quadraticCurveTo(664, 161, 738, yβSmallLine + 5);*/}
-      {/*    context.fillStrokeShape(shape);*/}
-      {/*  }}*/}
-      {/*  stroke="green"*/}
-      {/*  strokeWidth={2}*/}
-      {/*/>*/}
+      <Shape
+        sceneFunc={(context, shape) => {
+          context.beginPath();
+          context.moveTo(598, yBetaBigLine);
+          context.quadraticCurveTo(674, 112, xAdditinalLine, yBetaBigLine + 12);
+          context.fillStrokeShape(shape);
+        }}
+        stroke="blue"
+        strokeWidth={2}
+      />
       {/*<Arrow*/}
       {/*  points={[756, 190, 740, 190]}*/}
       {/*  pointerLength={5}*/}
@@ -86,7 +90,7 @@ function RightShape({
       {/*  stroke={"red"}*/}
       {/*  strokeWidth={3}*/}
       {/*/>*/}
-      <Text x={653} y={113} text={"β"} fontSize={45} />
+      {/*<Text x={653} y={113} text={"β"} fontSize={45} />*/}
     </Group>
   );
 }
