@@ -14,7 +14,7 @@ import { useRef, useState } from "react";
 import LeftShape from "./LeftShape";
 import RightShape from "./RightShape";
 import BottomShape from "./BottomShape";
-export default function UButtOnVRoot() {
+export default function SteepFlankedSingleV() {
   const url = "img.gif";
   const [image] = useImage(url);
   const [text, setText] = useState("");
@@ -31,13 +31,15 @@ export default function UButtOnVRoot() {
   let [yBetaSmallLine, setyBetaSmallLine] = useState(151);
   let [yBetaBigLine, setyBetaBigLine] = useState(148);
   let e = 422;
-  let s = 600;
-  let t = 875;
   const [grad, setGrad] = useState(15);
   let initialT1 = e - bRightShape;
   let initiala = 10 * Math.cos((grad * Math.PI) / 180);
-  let initialX = initialT1 * Math.tan((grad * Math.PI) / 180) + s;
+  let initialX = initialT1 * Math.tan((grad * Math.PI) / 180) + 600;
   let xAdditinalLine = initialX + 65 * Math.tan((grad * Math.PI) / 180);
+  let initialXQuadratic = (xAdditinalLine + 610) / 2;
+  const [xQuadratic, setXQuadratic] = useState(initialXQuadratic);
+  let initialYQuadratic = (yBetaBigLine + yBetaSmallLine) / 2;
+  const [yQuadratic, setYQuadratic] = useState(initialYQuadratic);
 
   const handleMouseMove = (e) => {
     const stage = e.target.getStage();
@@ -71,10 +73,12 @@ export default function UButtOnVRoot() {
     console.log("grad" + grad);
     console.log("xAdditinalLine" + xAdditinalLine);
     console.log("initialx" + initialX);
+    // setXQuadratic(xAdditinalLine + 4);
   };
   const handelDecBeta = () => {
     setGrad(grad - 5);
   };
+
   const [xCordinateLeftShape, setXCordinateLeftShape] = useState(0);
   const [xCordinateRightShape, setXCordinateRightShape] = useState(0);
   const [bPlas, setBPlas] = useState(596);
@@ -112,15 +116,16 @@ export default function UButtOnVRoot() {
             xCordinateRightShape={xCordinateRightShape}
             bRightShape={bRightShape}
             initialX={initialX}
-            s={s}
-            t={t}
+            // s={s}
+            // t={t}
             fRightShape={fRightShape}
             hRightShape={hRightShape}
             jRightShape={jRightShape}
             kRightShape={kRightShape}
             yBetaBigLine={yBetaBigLine}
             xAdditinalLine={xAdditinalLine}
-            initiala={initiala}
+            xQuadratic={xQuadratic}
+            yBetaSmallLine={yBetaSmallLine}
           />
           <BottomShape
             xCordinateRightShape={xCordinateRightShape}

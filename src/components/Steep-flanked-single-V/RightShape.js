@@ -5,17 +5,17 @@ function RightShape({
   xCordinateRightShape,
   bRightShape,
   initialX,
-  s,
-  t,
+  // s,
+  // t,
   fRightShape,
   hRightShape,
   jRightShape,
   kRightShape,
   yBetaBigLine,
   xAdditinalLine,
-  initiala,
+  yBetaSmallLine,
+  xQuadratic,
 }) {
-  const xcurveLine = xAdditinalLine - 597;
   return (
     <Group>
       <Shape
@@ -24,8 +24,8 @@ function RightShape({
           context.beginPath();
           context.moveTo(875, bRightShape);
           context.lineTo(initialX, bRightShape);
-          context.lineTo(s, 425);
-          context.lineTo(t, 425);
+          context.lineTo(600, 425);
+          context.lineTo(875, 425);
           context.lineTo(875, fRightShape);
           context.lineTo(895, hRightShape);
           context.lineTo(855, jRightShape);
@@ -76,7 +76,12 @@ function RightShape({
         sceneFunc={(context, shape) => {
           context.beginPath();
           context.moveTo(598, yBetaBigLine);
-          context.quadraticCurveTo(674, 112, xAdditinalLine, yBetaBigLine + 12);
+          context.quadraticCurveTo(
+            xQuadratic,
+            118,
+            xAdditinalLine,
+            yBetaSmallLine + 10
+          );
           context.fillStrokeShape(shape);
         }}
         stroke="blue"
