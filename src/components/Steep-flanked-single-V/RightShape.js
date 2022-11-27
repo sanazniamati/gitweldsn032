@@ -77,8 +77,8 @@ function RightShape({
           context.beginPath();
           context.moveTo(598, yBetaBigLine);
           context.quadraticCurveTo(
-            xQuadratic,
-            118,
+              ((598+xAdditinalLine)/2)+60,
+              ((yBetaBigLine+yBetaSmallLine + 10)/2)-60,
             xAdditinalLine,
             yBetaSmallLine + 10
           );
