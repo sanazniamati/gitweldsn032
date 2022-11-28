@@ -1,16 +1,6 @@
-import {
-  Stage,
-  Layer,
-  Line,
-  Group,
-  Image,
-  Text,
-  Arrow,
-  Shape,
-  Rect,
-} from "react-konva";
+import { Stage, Layer, Line, Group, Image, Text } from "react-konva";
 import useImage from "use-image";
-import { useRef, useState } from "react";
+import { useState } from "react";
 import LeftShape from "./LeftShape";
 import RightShape from "./RightShape";
 import BottomShape from "./BottomShape";
@@ -36,6 +26,10 @@ export default function SteepFlankedSingleV() {
   let initiala = 10 * Math.cos((grad * Math.PI) / 180);
   let initialX = initialT1 * Math.tan((grad * Math.PI) / 180) + 600;
   let xAdditinalLine = initialX + 65 * Math.tan((grad * Math.PI) / 180);
+  const [xCordinateLeftShape, setXCordinateLeftShape] = useState(0);
+  const [xCordinateRightShape, setXCordinateRightShape] = useState(0);
+  const [bPlas, setBPlas] = useState(596);
+  const [width, setWidth] = useState(316);
   let initialXQuadratic = (xAdditinalLine + 610) / 2;
   const [xQuadratic, setXQuadratic] = useState(initialXQuadratic);
   let initialYQuadratic = (yBetaBigLine + yBetaSmallLine) / 2;
@@ -58,6 +52,13 @@ export default function SteepFlankedSingleV() {
     setJ(j - 5);
     setK(k - 5);
   };
+  const handelDecT2 = () => {
+    setB(b + 10);
+    setF(f + 5);
+    setH(h + 5);
+    setJ(j + 5);
+    setK(k + 5);
+  };
   const handelIncT1 = () => {
     setBRightShape(bRightShape - 10);
     setFRightShape(fRightShape - 5);
@@ -66,30 +67,37 @@ export default function SteepFlankedSingleV() {
     setKRightShape(kRightShape - 5);
     setyBetaSmallLine(yBetaSmallLine - 10);
     setyBetaBigLine(yBetaBigLine - 10);
-    console.log("initialT1" + initialT1);
+  };
+  const handelDecT1 = () => {
+    setBRightShape(bRightShape + 10);
+    setFRightShape(fRightShape + 5);
+    setHRightShape(hRightShape + 5);
+    setJRightShape(jRightShape + 5);
+    setKRightShape(kRightShape + 5);
+    setyBetaSmallLine(yBetaSmallLine + 10);
+    setyBetaBigLine(yBetaBigLine + 10);
   };
   const handelIncBeta = () => {
     setGrad(grad + 5);
-    console.log("grad" + grad);
-    console.log("xAdditinalLine" + xAdditinalLine);
-    console.log("initialx" + initialX);
-    // setXQuadratic(xAdditinalLine + 4);
   };
   const handelDecBeta = () => {
     setGrad(grad - 5);
   };
 
-  const [xCordinateLeftShape, setXCordinateLeftShape] = useState(0);
-  const [xCordinateRightShape, setXCordinateRightShape] = useState(0);
-  const [bPlas, setBPlas] = useState(596);
-  const [width, setWidth] = useState(316);
   const handelIncB = () => {
     setBPlas(bPlas + 10);
     setWidth(width + 10);
-    console.log(bPlas);
     setXCordinateLeftShape(xCordinateLeftShape - 5);
     setXCordinateRightShape(xCordinateRightShape + 5);
   };
+  const handelDecB = () => {
+    setBPlas(bPlas - 10);
+    setWidth(width - 10);
+    console.log(bPlas);
+    setXCordinateLeftShape(xCordinateLeftShape + 5);
+    setXCordinateRightShape(xCordinateRightShape - 5);
+  };
+
   return (
     <>
       <Stage
@@ -116,8 +124,6 @@ export default function SteepFlankedSingleV() {
             xCordinateRightShape={xCordinateRightShape}
             bRightShape={bRightShape}
             initialX={initialX}
-            // s={s}
-            // t={t}
             fRightShape={fRightShape}
             hRightShape={hRightShape}
             jRightShape={jRightShape}
@@ -148,11 +154,14 @@ export default function SteepFlankedSingleV() {
           />
         </Layer>
       </Stage>
-      <button onClick={handelIncT2}> t2 +</button>
       <button onClick={handelIncT1}>t1 +</button>
+      <button onClick={handelDecT1}>t1 -</button>
+      <button onClick={handelIncT2}> t2 +</button>
+      <button onClick={handelDecT2}> t2 -</button>
       <button onClick={handelIncBeta}> β + </button>
       <button onClick={handelDecBeta}> β - </button>
       <button onClick={handelIncB}> b + </button>
+      <button onClick={handelDecB}> b - </button>
     </>
   );
 }
