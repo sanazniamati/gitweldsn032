@@ -5,6 +5,8 @@ function RightShape({
   xCordinateRightShape,
   bRightShape,
   initialX,
+  // s,
+  // t,
   fRightShape,
   hRightShape,
   jRightShape,
@@ -63,22 +65,20 @@ function RightShape({
         fontSize={40}
       />
       {/*    beta */}
-      <Arrow
-        x={xCordinateRightShape}
-        points={[582, yBetaSmallLine + 8, 595, yBetaSmallLine]}
-        pointerLength={5}
-        pointerWidth={5}
-        stroke={"red"}
-        strokeWidth={3}
-      />
+      {/*<Arrow*/}
+      {/*  points={[580, 157, 593, 157]}*/}
+      {/*  pointerLength={5}*/}
+      {/*  pointerWidth={5}*/}
+      {/*  stroke={"red"}*/}
+      {/*  strokeWidth={13}*/}
+      {/*/>*/}
       <Shape
-        x={xCordinateRightShape}
         sceneFunc={(context, shape) => {
           context.beginPath();
           context.moveTo(598, yBetaBigLine);
           context.quadraticCurveTo(
-            (598 + xAdditinalLine) / 2 + 10,
-            (yBetaBigLine + yBetaSmallLine + 10) / 2 - 60,
+            xQuadratic,
+            118,
             xAdditinalLine,
             yBetaSmallLine + 10
           );
@@ -87,26 +87,15 @@ function RightShape({
         stroke="blue"
         strokeWidth={2}
       />
-      <Arrow
-        x={xCordinateRightShape}
-        points={[
-          xAdditinalLine + 10,
-          yBetaSmallLine + 25,
-          xAdditinalLine + 2,
-          yBetaSmallLine + 12,
-        ]}
-        pointerLength={5}
-        pointerWidth={5}
-        pointerAtEnding={true}
-        stroke={"red"}
-        strokeWidth={3}
-      />
-      <Text
-        x={xCordinateRightShape + xAdditinalLine - 45}
-        y={yBetaSmallLine - 65}
-        text={"β"}
-        fontSize={30}
-      />
+      {/*<Arrow*/}
+      {/*  points={[756, 190, 740, 190]}*/}
+      {/*  pointerLength={5}*/}
+      {/*  pointerWidth={5}*/}
+      {/*  pointerAtEnding={true}*/}
+      {/*  stroke={"red"}*/}
+      {/*  strokeWidth={3}*/}
+      {/*/>*/}
+      {/*<Text x={653} y={113} text={"β"} fontSize={45} />*/}
     </Group>
   );
 }
