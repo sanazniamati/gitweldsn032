@@ -54,6 +54,10 @@ export default function UButtOnVRoot() {
   const [hRightShape, setHRightShape] = useState(363);
   const [jRightShape, setJRightShape] = useState(353);
   const [kRightShape, setKRightShape] = useState(347);
+  const [radius, setRadius] = useState(50);
+  const initialH = 454 - kRightShape;
+  const [alfa, setAlfa] = useState(45);
+  const initialXSP = initialH / Math.tan((alfa * Math.PI) / 180);
   //x,y Sart point Right shape
   const [xSPLeftShape, setXSPLeftShape] = useState();
   const [ySPLeftShape, setYSPLeftShape] = useState(348);
@@ -78,13 +82,22 @@ export default function UButtOnVRoot() {
   const handelDecT2 = () => {};
   const handelIncBeta = () => {};
   const handelDecBeta = () => {};
-  const handelIncAlfa = () => {};
-  const handelDecAlfa = () => {};
+  const handelIncAlfa = () => {
+    setAlfa(alfa + 5);
+  };
+  const handelDecAlfa = () => {
+    setAlfa(alfa - 5);
+  };
   const handelIncH = () => {
     setYSPLeftShape(ySPLeftShape - 10);
   };
   const handelDecH = () => {};
-
+  const handelIncR = () => {
+    setRadius(radius + 5);
+  };
+  const handelDecR = () => {
+    setRadius(radius - 5);
+  };
   return (
     <>
       <button onClick={handelIncT1}>t1 +</button>
@@ -97,6 +110,10 @@ export default function UButtOnVRoot() {
       {/*<button onClick={handelDecAlfa}> α - </button>*/}
       <button onClick={handelIncH}> h + </button>
       {/*<button onClick={handelDecH}> h - </button>*/}
+      <button onClick={handelIncR}> R + </button>
+      <button onClick={handelDecR}> R - </button>
+      <button onClick={handelIncAlfa}> Alfa + </button>
+      <button onClick={handelDecAlfa}> Alfa - </button>
       <Stage
         width={window.innerWidth}
         height={window.innerHeight}
@@ -126,6 +143,8 @@ export default function UButtOnVRoot() {
             kRightShape={kRightShape}
             xBeta={xBeta}
             ySPLeftShape={ySPLeftShape}
+            radius={radius}
+            initialXSP={initialXSP}
           />
           <BetaDegree bRightShape={bRightShape} />
           {/*  R*/}

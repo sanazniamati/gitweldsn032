@@ -1,0 +1,117 @@
+import { Stage, Layer, Group, Image, Text } from "react-konva";
+import useImage from "use-image";
+import { useRef, useState } from "react";
+import LeftShape from "./LeftShape";
+import BottomShape from "./bottomShape";
+import RightShape from "./RightShape";
+
+export default function HY_butt() {
+  const url = "img.gif";
+  const [image] = useImage(url);
+  const stageRef = useRef();
+  const [text, setText] = useState("");
+  const handleMouseMove = (e) => {
+    const stage = e.target.getStage();
+    const pointerPosition = stage.getPointerPosition();
+    const x = pointerPosition.x;
+    const y = pointerPosition.y;
+    setText(() => "X:" + x + " Y:" + y);
+  };
+  const handelMouseOut = () => {
+    setText("");
+  };
+  //Right shape
+  const [r, setR] = useState(150);
+  const [ySPRightShape, setYSPRightShape] = useState(483);
+  //left shape
+  const [aLeftShape, setALeftShape] = useState(494);
+  const [x1LeftShape, setX1LeftShape] = useState(430);
+  const [x2LeftShape, setX2LeftShape] = useState(433);
+  const [x3LeftShape, setX3LeftShape] = useState(439);
+  const [x4LeftShape, setX4LeftShape] = useState(442);
+  //bottomShape
+  const [xCordinateLeftShape, setXCordinateLeftShape] = useState(0);
+  const [xCordinateRightShape, setXCordinateRightShape] = useState(0);
+  const [bPlas, setBPlas] = useState(522);
+
+  const handelIncB = () => {
+    setBPlas(bPlas + 10);
+    setXCordinateLeftShape(xCordinateLeftShape - 5);
+    setXCordinateRightShape(xCordinateRightShape + 5);
+  };
+  const handelDecB = () => {
+    setBPlas(bPlas - 10);
+    setXCordinateLeftShape(xCordinateLeftShape + 5);
+    setXCordinateRightShape(xCordinateRightShape - 5);
+  };
+  const handelIncR = () => {
+    setR(r + 5);
+    console.log("r" + r);
+    setYSPRightShape(ySPRightShape + 5);
+  };
+  const handelDecR = () => {
+    setR(r - 5);
+    setYSPRightShape(ySPRightShape - 5);
+  };
+  const handelIncT1 = () => {};
+  const handelDecT1 = () => {};
+  const handelIncT2 = () => {
+    setALeftShape(aLeftShape + 10);
+    setX1LeftShape(x1LeftShape + 5);
+    setX2LeftShape(x2LeftShape + 5);
+    setX3LeftShape(x3LeftShape + 5);
+    setX4LeftShape(x4LeftShape + 5);
+  };
+  const handelDecT2 = () => {
+    setALeftShape(aLeftShape - 10);
+    setX1LeftShape(x1LeftShape - 5);
+    setX2LeftShape(x2LeftShape - 5);
+    setX3LeftShape(x3LeftShape - 5);
+    setX4LeftShape(x4LeftShape - 5);
+  };
+
+  return (
+    <>
+      <button onClick={handelIncB}> b + </button>
+      <button onClick={handelDecB}> b - </button>
+      <button onClick={handelIncR}>R + </button>
+      <button onClick={handelDecR}> R - </button>
+      <button onClick={handelIncT1}>t1 +</button>
+      <button onClick={handelDecT1}>t1 -</button>
+      <button onClick={handelIncT2}> t2 +</button>
+      <button onClick={handelDecT2}> t2 -</button>
+      <Stage
+        width={window.innerWidth}
+        height={window.innerHeight}
+        ref={stageRef}
+        onMouseMove={handleMouseMove}
+        onMouseOut={handelMouseOut}
+      >
+        <Layer>
+          <Group>
+            {/*<Image x={100} y={10} image={image} />*/}
+            <Text text={text} x={10} y={50} fontSize={20} />
+          </Group>
+          <LeftShape
+            xCordinateLeftShape={xCordinateLeftShape}
+            aLeftShape={aLeftShape}
+            x1LeftShape={x1LeftShape}
+            x2LeftShape={x2LeftShape}
+            x3LeftShape={x3LeftShape}
+            x4LeftShape={x4LeftShape}
+          />
+          <BottomShape
+            xCordinateRightShape={xCordinateRightShape}
+            xCordinateLeftShape={xCordinateLeftShape}
+            bPlas={bPlas}
+          />
+          <RightShape
+            xCordinateRightShape={xCordinateRightShape}
+            r={r}
+            ySPRightShape={ySPRightShape}
+          />
+        </Layer>
+      </Stage>
+    </>
+  );
+}

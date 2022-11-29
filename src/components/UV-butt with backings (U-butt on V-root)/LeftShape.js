@@ -40,7 +40,8 @@ function LeftShape({
           context.beginPath();
           context.moveTo(265, bLeftShape);
           context.lineTo(414, bLeftShape);
-          context.quadraticCurveTo(480, yCPLeftShape, 512, yEPLeftShape);
+          context.arcTo(480, yCPLeftShape, 512, yEPLeftShape, 60);
+          // context.quadraticCurveTo(480, yCPLeftShape, 512, yEPLeftShape);
           context.lineTo(xAlfa, 457);
           context.lineTo(264, 457);
           context.lineTo(264, fLeftShape);

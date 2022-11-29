@@ -9,6 +9,8 @@ function RightShape({
   jRightShape,
   hRightShape,
   ySPLeftShape,
+  radius,
+  initialXSP,
 }) {
   return (
     <Group>
@@ -69,8 +71,11 @@ function RightShape({
           context.lineTo(858, fRightShape);
           context.lineTo(857, 458);
           context.lineTo(561, 457);
-          context.lineTo(607, ySPLeftShape);
-          context.quadraticCurveTo(645, 349, 720, bRightShape);
+          context.lineTo(initialXSP + 485, ySPLeftShape);
+          context.arcTo(645, 349, 720, bRightShape, radius);
+          // context.quadraticCurveTo(645, 349, 720, bRightShape);
+          // context.arc(607, ySPLeftShape, 30, 0, 0.5 * Math.PI);
+          // context.lineTo(720, bRightShape);
           context.closePath();
           context.fillStrokeShape(shape);
         }}
