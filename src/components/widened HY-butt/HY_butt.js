@@ -6,9 +6,7 @@ import BottomShape from "./bottomShape";
 import RightShape from "./RightShape";
 
 export default function HY_butt() {
-  const url = "img.gif";
-  const [image] = useImage(url);
-  const stageRef = useRef();
+  // const url = "img.gif";
   const [text, setText] = useState("");
   const handleMouseMove = (e) => {
     const stage = e.target.getStage();
@@ -21,14 +19,21 @@ export default function HY_butt() {
     setText("");
   };
   //Right shape
+  const [bRightShape, setBRightShape] = useState(269);
+  const [y1LeftShape, setY1LeftShape] = useState(334);
+  const [y2LeftShape, setY2LeftShape] = useState(338);
+  const [y3LeftShape, setY3LeftShape] = useState(346);
+  const [y4LeftShape, setY4LeftShape] = useState(349);
   const [r, setR] = useState(150);
   const [ySPRightShape, setYSPRightShape] = useState(483);
+  const [yCPRightShape, setYCPRightShape] = useState(280);
   //left shape
   const [aLeftShape, setALeftShape] = useState(494);
   const [x1LeftShape, setX1LeftShape] = useState(430);
   const [x2LeftShape, setX2LeftShape] = useState(433);
   const [x3LeftShape, setX3LeftShape] = useState(439);
   const [x4LeftShape, setX4LeftShape] = useState(442);
+
   //bottomShape
   const [xCordinateLeftShape, setXCordinateLeftShape] = useState(0);
   const [xCordinateRightShape, setXCordinateRightShape] = useState(0);
@@ -53,8 +58,24 @@ export default function HY_butt() {
     setR(r - 5);
     setYSPRightShape(ySPRightShape - 5);
   };
-  const handelIncT1 = () => {};
-  const handelDecT1 = () => {};
+  const handelIncT1 = () => {
+    setBRightShape(bRightShape - 10);
+    setY1LeftShape(y1LeftShape - 5);
+    setY2LeftShape(y2LeftShape - 5);
+    setY3LeftShape(y3LeftShape - 5);
+    setY4LeftShape(y4LeftShape - 5);
+    setYCPRightShape(yCPRightShape - 10);
+    setYSPRightShape(ySPRightShape - 10);
+  };
+  const handelDecT1 = () => {
+    setBRightShape(bRightShape + 10);
+    setY1LeftShape(y1LeftShape + 5);
+    setY2LeftShape(y2LeftShape + 5);
+    setY3LeftShape(y3LeftShape + 5);
+    setY4LeftShape(y4LeftShape + 5);
+    setYCPRightShape(yCPRightShape + 10);
+    setYSPRightShape(ySPRightShape + 10);
+  };
   const handelIncT2 = () => {
     setALeftShape(aLeftShape + 10);
     setX1LeftShape(x1LeftShape + 5);
@@ -83,7 +104,6 @@ export default function HY_butt() {
       <Stage
         width={window.innerWidth}
         height={window.innerHeight}
-        ref={stageRef}
         onMouseMove={handleMouseMove}
         onMouseOut={handelMouseOut}
       >
@@ -104,11 +124,18 @@ export default function HY_butt() {
             xCordinateRightShape={xCordinateRightShape}
             xCordinateLeftShape={xCordinateLeftShape}
             bPlas={bPlas}
+            aLeftShape={aLeftShape}
           />
           <RightShape
             xCordinateRightShape={xCordinateRightShape}
             r={r}
+            yCPRightShape={yCPRightShape}
             ySPRightShape={ySPRightShape}
+            bRightShape={bRightShape}
+            y1LeftShape={y1LeftShape}
+            y2LeftShape={y2LeftShape}
+            y3LeftShape={y3LeftShape}
+            y4LeftShape={y4LeftShape}
           />
         </Layer>
       </Stage>

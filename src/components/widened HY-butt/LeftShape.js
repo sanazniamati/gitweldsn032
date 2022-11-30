@@ -17,7 +17,12 @@ function LeftShape({
         strokeWidth={2}
         points={[378, 73, 378, 17]}
       />
-      <Text x={xCordinateLeftShape + 420} y={21} text={"t2"} fontSize={20} />
+      <Text
+        x={xCordinateLeftShape + aLeftShape - 80}
+        y={21}
+        text={"t2"}
+        fontSize={20}
+      />
       <Arrow
         x={xCordinateLeftShape}
         points={[380, 17, aLeftShape - 2, 17]}
@@ -56,7 +61,7 @@ function LeftShape({
           context.closePath();
           context.fillStrokeShape(shape);
         }}
-        fill="lightgrey"
+        // fill="lightgrey"
         stroke="red"
         strokeWidth={3}
       />
