@@ -35,7 +35,7 @@ export default function U_Butt() {
   //first control point right shape
   const [fCPRightShape, setFCPRightShape] = useState(665);
   const handelIncR = () => {
-    if (r >= 95) {
+    if (r > 55) {
       setFCPRightShape(fCPRightShape + 10);
       setR(r + 5);
     } else {
@@ -45,7 +45,14 @@ export default function U_Butt() {
     console.log("r" + r);
   };
   const handelDecR = () => {
-    setR(r - 5);
+    if (r <= 80 && r >= 60) {
+      setFCPRightShape(fCPRightShape - 10);
+      setR(r - 5);
+    } else {
+      // setFCPRightShape(fCPRightShape + 10);
+      setR(r - 5);
+    }
+    console.log("fCPRightShape" + fCPRightShape);
     console.log("r" + r);
   };
 
