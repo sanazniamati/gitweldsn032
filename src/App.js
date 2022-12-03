@@ -6,9 +6,9 @@ export default function App() {
   return (
     <>
       {/*<SteepFlankedSingleV />*/}
-      {/*<UbuttOnVRoot />*/}
+      <UbuttOnVRoot />
       {/*<HY_butt />*/}
-      <U_Butt />
+      {/*<U_Butt />*/}
     </>
   );
 }

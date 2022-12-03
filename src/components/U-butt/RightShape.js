@@ -1,7 +1,7 @@
 import React from "react";
 import { Arrow, Group, Line, Shape, Text, TextPath } from "react-konva";
 
-function RightShape({ r, fCPRightShape, c }) {
+function RightShape({ r, c }) {
   return (
     <Group>
       <Line stroke={"green"} strokeWidth={2} points={[873, 245, 969, 245]} />

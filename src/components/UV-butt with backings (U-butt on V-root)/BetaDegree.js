@@ -12,8 +12,8 @@ function BetaDegree({ bRightShape }) {
       />
       <Line
         stroke={"green"}
-        strokeWidth={2}
-        points={[664, 326, 647, bRightShape - 61]}
+        strokeWidth={4}
+        points={[648, 326, 647, bRightShape - 61]}
       />
       <Text x={691} y={158} text={"β"} fontSize={30} />
       <Arrow

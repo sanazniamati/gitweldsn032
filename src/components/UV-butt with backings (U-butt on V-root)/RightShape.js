@@ -71,10 +71,18 @@ function RightShape({
           context.lineTo(858, fRightShape);
           context.lineTo(857, 458);
           context.lineTo(561, 457);
-          context.lineTo(initialXSP + 485, ySPLeftShape);
-          context.arcTo(645, 349, 720, bRightShape, radius);
+          context.lineTo(607, ySPLeftShape - 5);
+          // context.arcTo(645, 349, 720, bRightShape, radius);
           // context.quadraticCurveTo(645, 349, 720, bRightShape);
-          // context.arc(607, ySPLeftShape, 30, 0, 0.5 * Math.PI);
+          context.arc(
+            608,
+            282,
+            60,
+            (90 * Math.PI) / 180,
+            (40 * Math.PI) / 180,
+            true
+          );
+
           // context.lineTo(720, bRightShape);
           context.closePath();
           context.fillStrokeShape(shape);

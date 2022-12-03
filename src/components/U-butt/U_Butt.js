@@ -34,28 +34,14 @@ export default function U_Butt() {
   const [r, setR] = useState(105);
   const [c, setC] = useState(415);
   //start point for create Arc
-  const [sPArc, setSPArc] = useState();
-  //first control point right shape
-  const [fCPRightShape, setFCPRightShape] = useState(665);
   const handelIncR = () => {
-    if (r > 55) {
-      setFCPRightShape(fCPRightShape + 10);
-      setR(r + 5);
-    } else {
-      setR(r + 5);
-    }
-    console.log("fCPRightShape" + fCPRightShape);
+    setR(r + 5);
+    setC(c + 5);
     console.log("r" + r);
   };
   const handelDecR = () => {
-    if (r <= 80 && r >= 60) {
-      setFCPRightShape(fCPRightShape - 10);
-      setR(r - 5);
-    } else {
-      // setFCPRightShape(fCPRightShape + 10);
-      setR(r - 5);
-    }
-    console.log("fCPRightShape" + fCPRightShape);
+    setR(r - 5);
+    setC(c - 5);
     console.log("r" + r);
   };
   const handelIncC = () => {
@@ -85,7 +71,7 @@ export default function U_Butt() {
             <Text text={text} x={10} y={50} fontSize={20} />
           </Group>
           <LeftShape />
-          <RightShape r={r} fCPRightShape={fCPRightShape} c={c} />
+          <RightShape r={r} c={c} />
           <BottomShape />
         </Layer>
       </Stage>
