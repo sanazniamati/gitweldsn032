@@ -1,7 +1,7 @@
 import React from "react";
 import { Arrow, Group, Line, Shape, Text, TextPath } from "react-konva";
 
-function RightShape({ r, fCPRightShape }) {
+function RightShape({ r, fCPRightShape, c }) {
   return (
     <Group>
       <Line stroke={"green"} strokeWidth={2} points={[873, 245, 969, 245]} />
@@ -16,9 +16,9 @@ function RightShape({ r, fCPRightShape }) {
       />
       <Text text={"t1"} x={930} y={325} fontSize={40} />
 
-      <Line stroke={"green"} strokeWidth={2} points={[576, 409, 937, 409]} />
+      <Line stroke={"green"} strokeWidth={2} points={[576, c, 937, c]} />
       <Arrow
-        points={[937, 411, 937, 451]}
+        points={[937, c + 3, 937, 451]}
         pointerLength={5}
         pointerWidth={5}
         pointerAtBeginning={true}
@@ -26,7 +26,7 @@ function RightShape({ r, fCPRightShape }) {
         stroke={"blue"}
         strokeWidth={3}
       />
-      <Text text={"C"} x={898} y={414} fontSize={30} />
+      <Text text={"C"} x={898} y={418} fontSize={30} />
 
       <Shape
         sceneFunc={(context, shape) => {
@@ -39,9 +39,10 @@ function RightShape({ r, fCPRightShape }) {
           context.lineTo(875, 360);
           context.lineTo(875, 453);
           context.lineTo(577, 453);
-          context.lineTo(577, 408);
+          // context.lineTo(577, 408);
           // context.quadraticCurveTo(665, 412, 686, 247);
-          context.arcTo(fCPRightShape, 412, 686, 247, r);
+          // context.arcTo(fCPRightShape, 412, 686, 247, r);
+          context.arc(577, 310, r, (90 * Math.PI) / 180, 0, true);
           context.closePath();
           context.fillStrokeShape(shape);
         }}
@@ -79,7 +80,7 @@ function RightShape({ r, fCPRightShape }) {
       {/*/>*/}
       {/*  R*/}
       <Arrow
-        points={[578, 321, 621, 391]}
+        points={[578, 321, 621, 290 + r]}
         pointerLength={5}
         pointerWidth={5}
         stroke={"blue"}
