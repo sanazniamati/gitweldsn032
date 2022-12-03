@@ -19,20 +19,7 @@ function LeftShape(props) {
       <Shape
         sceneFunc={(context, shape) => {
           context.beginPath();
-          // context.moveTo(250, 260);
-          // context.lineTo(443, 260);
-          // context.quadraticCurveTo(456, 398, 548, 409);
-          // // context.arc(577, 310, 105, 0, (90 * Math.PI) / 180);
-          //
-          // context.lineTo(548, 455);
-          // context.lineTo(250, 455);
-          // context.lineTo(250, 368);
-          // context.lineTo(268, 362);
-          // context.lineTo(235, 351);
-          // context.lineTo(250, 344);
           context.moveTo(548, 455);
-          // context.lineTo(548, 409);
-          // context.quadraticCurveTo(456, 398, 548, 409);
           context.arc(
             548,
             310,
@@ -41,7 +28,6 @@ function LeftShape(props) {
             (180 * Math.PI) / 180,
             false
           );
-
           context.lineTo(443, 247);
           context.lineTo(250, 247);
           context.lineTo(250, 344);
