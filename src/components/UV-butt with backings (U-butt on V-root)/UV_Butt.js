@@ -18,9 +18,7 @@ import RightShape from "./RightShape";
 import React from "react";
 import BottomShape from "./BottomShape";
 
-export default function UButtOnVRoot() {
-  const url = "img.gif";
-  const [image] = useImage(url);
+export default function UV_Butt() {
   const [text, setText] = useState("");
   const handleMouseMove = (e) => {
     const stage = e.target.getStage();
@@ -38,15 +36,7 @@ export default function UButtOnVRoot() {
   const [hLeftShape, setHLeftShape] = useState(367);
   const [jLeftShape, setJLeftShape] = useState(357);
   const [kLeftShape, setKLeftShape] = useState(352);
-  //x,y control point left shape
-  const [xCPLeftShape, setXCPLeftShape] = useState();
-  const [yCPLeftShape, setYCPLeftShape] = useState(349);
-  //x,y End point left shape
-  const [xEPLeftShape, setXEPLeftShape] = useState();
-  const [yEPLeftShape, setYEPLeftShape] = useState(345);
-
-  const [xAlfaLeftShape, setXAlfaLeftShape] = useState();
-
+  //xalfa is  x nimsaz alfa
   const xAlfa = 560;
   //states Right shape
   const [bRightShape, setBRightShape] = useState(255);
@@ -54,13 +44,20 @@ export default function UButtOnVRoot() {
   const [hRightShape, setHRightShape] = useState(363);
   const [jRightShape, setJRightShape] = useState(353);
   const [kRightShape, setKRightShape] = useState(347);
-  const [radius, setRadius] = useState(50);
-  const initialH = 454 - kRightShape;
-  const [alfa, setAlfa] = useState(45);
-  const initialXSP = initialH / Math.tan((alfa * Math.PI) / 180);
-  //x,y Sart point Right shape
-  const [xSPLeftShape, setXSPLeftShape] = useState();
-  const [ySPLeftShape, setYSPLeftShape] = useState(348);
+  const [r, setR] = useState(60);
+  // y start point for arc Left shape and calc H
+  const [ySPLeftShape, setYSPLeftShape] = useState(282 + r);
+  const initialH = 454 - ySPLeftShape;
+  const [alfa, setAlfa] = useState(50);
+  let alfa1 = alfa / 2;
+  //x start point for arc Right shape
+  const initialXSPRightShape =
+    Math.tan((alfa1 * Math.PI) / 180) * initialH + xAlfa;
+
+  //x start point for arc Left shape
+  const initialXSPLeftShape =
+    xAlfa - Math.tan((alfa1 * Math.PI) / 180) * initialH;
+
   const [xBeta, setXBeta] = useState(720);
   const handelIncT1 = () => {
     setBRightShape(bRightShape - 10);
@@ -76,8 +73,8 @@ export default function UButtOnVRoot() {
     setHLeftShape(hLeftShape - 5);
     setJLeftShape(jLeftShape - 5);
     setKLeftShape(kLeftShape - 5);
-    setYCPLeftShape(yCPLeftShape - 5);
-    setYEPLeftShape(yEPLeftShape - 5);
+    // setYCPLeftShape(yCPLeftShape - 5);
+    // setYEPLeftShape(yEPLeftShape - 5);
   };
   const handelDecT2 = () => {};
   const handelIncBeta = () => {};
@@ -91,12 +88,16 @@ export default function UButtOnVRoot() {
   const handelIncH = () => {
     setYSPLeftShape(ySPLeftShape - 10);
   };
-  const handelDecH = () => {};
+  const handelDecH = () => {
+    setYSPLeftShape(ySPLeftShape + 10);
+  };
   const handelIncR = () => {
-    setRadius(radius + 5);
+    setR(r + 5);
+    console.log("r :" + r);
   };
   const handelDecR = () => {
-    setRadius(radius - 5);
+    setR(r - 5);
+    console.log("r :" + r);
   };
   return (
     <>
@@ -104,12 +105,8 @@ export default function UButtOnVRoot() {
       {/*<button onClick={handelDecT1}>t1 -</button>*/}
       <button onClick={handelIncT2}> t2 +</button>
       {/*<button onClick={handelDecT2}> t2 -</button>*/}
-      {/*<button onClick={handelIncBeta}> β + </button>*/}
-      {/*<button onClick={handelDecBeta}> β - </button>*/}
-      {/*<button onClick={handelIncAlfa}> α + </button>*/}
-      {/*<button onClick={handelDecAlfa}> α - </button>*/}
       <button onClick={handelIncH}> h + </button>
-      {/*<button onClick={handelDecH}> h - </button>*/}
+      <button onClick={handelDecH}> h - </button>
       <button onClick={handelIncR}> R + </button>
       <button onClick={handelDecR}> R - </button>
       <button onClick={handelIncAlfa}> Alfa + </button>
@@ -121,10 +118,8 @@ export default function UButtOnVRoot() {
         onMouseOut={handelMouseOut}
       >
         <Layer>
-          <Group>
-            {/*<Image x={100} y={2} image={image} />*/}
-            <Text text={text} x={10} y={50} fontSize={20} />
-          </Group>
+          <Text text={text} x={10} y={50} fontSize={20} />
+
           <LeftShape
             bLeftShape={bLeftShape}
             fLeftShape={fLeftShape}
@@ -132,8 +127,7 @@ export default function UButtOnVRoot() {
             kLeftShape={kLeftShape}
             jLeftShape={jLeftShape}
             xAlfa={xAlfa}
-            yCPLeftShape={yCPLeftShape}
-            yEPLeftShape={yEPLeftShape}
+            initialXSPLeftShape={initialXSPLeftShape}
           />
           <RightShape
             bRightShape={bRightShape}
@@ -143,10 +137,15 @@ export default function UButtOnVRoot() {
             kRightShape={kRightShape}
             xBeta={xBeta}
             ySPLeftShape={ySPLeftShape}
-            radius={radius}
-            initialXSP={initialXSP}
+            r={r}
+            initialXSPRightShape={initialXSPRightShape}
           />
-          <BetaDegree bRightShape={bRightShape} />
+          <BetaDegree
+            bRightShape={bRightShape}
+            initialXSPRightShape={initialXSPRightShape}
+            r={r}
+            ySPLeftShape={ySPLeftShape}
+          />
           {/*  R*/}
           <Arrow
             points={[608, 289, 632, 334]}

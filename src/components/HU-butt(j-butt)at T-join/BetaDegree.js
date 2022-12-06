@@ -1,30 +1,30 @@
 import React from "react";
 import { Arrow, Group, Line, Shape, Text } from "react-konva";
 
-function BetaDegree({ bRightShape, initialXSPRightShape, r }) {
+function BetaDegree({ xAdditinalLine, x2AdditinalLine }) {
   return (
     <Group>
-      {/*Beta*/}
+      {/*  additinal line*/}
       <Line
         stroke={"green"}
         strokeWidth={2}
-        points={[719, bRightShape, 738, bRightShape - 23]}
+        points={[xAdditinalLine, 223, x2AdditinalLine, 158]}
       />
       <Line
         stroke={"green"}
-        strokeWidth={4}
-        points={[647, 326, 647, bRightShape - 61]}
+        strokeWidth={2}
+        points={[571, 415 - 110, 559, 151]}
       />
-      <Text x={691} y={158} text={"β"} fontSize={30} />
+      <Text x={572} y={120} text={"β"} fontSize={30} />
       <Arrow
-        points={[750, bRightShape - 11, 742, bRightShape - 21]}
+        points={[614, 171, 600, 164]}
         pointerLength={5}
         pointerWidth={5}
         stroke={"blue"}
         strokeWidth={3}
       />
       <Arrow
-        points={[632, bRightShape - 61, 646, bRightShape - 61]}
+        points={[540, 162, 558, 160]}
         pointerLength={5}
         pointerWidth={5}
         stroke={"blue"}
@@ -33,13 +33,8 @@ function BetaDegree({ bRightShape, initialXSPRightShape, r }) {
       <Shape
         sceneFunc={(context, shape) => {
           context.beginPath();
-          context.moveTo(647, bRightShape - 61);
-          context.quadraticCurveTo(
-            702,
-            bRightShape - 61,
-            741,
-            bRightShape - 21
-          );
+          context.moveTo(559, 160);
+          context.quadraticCurveTo(576, 155, 595, 163);
           context.fillStrokeShape(shape);
         }}
         stroke="green"

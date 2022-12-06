@@ -10,6 +10,7 @@ function LeftShape({
   xAlfa,
   yCPLeftShape,
   yEPLeftShape,
+  initialXSPLeftShape,
 }) {
   return (
     <Group>
@@ -38,29 +39,11 @@ function LeftShape({
       <Shape
         sceneFunc={(context, shape) => {
           context.beginPath();
-          // context.moveTo(265, bLeftShape);
-          // context.lineTo(414, bLeftShape);
-          // context.arcTo(480, yCPLeftShape, 512, yEPLeftShape, 60);
-          // // context.quadraticCurveTo(480, yCPLeftShape, 512, yEPLeftShape);
-          // // context.arc(
-          // //   532,
-          // //   310,
-          // //   50,
-          // //   (90 * Math.PI) / 180,
-          // //   (180 * Math.PI) / 180,
-          // //   false
-          // // );
-          // context.lineTo(xAlfa, 457);
-          // context.lineTo(264, 457);
-          // context.lineTo(264, fLeftShape);
-          // context.lineTo(283, hLeftShape);
-          // context.lineTo(247, jLeftShape);
-          // context.lineTo(264, kLeftShape);
           context.moveTo(xAlfa, 457);
           // context.lineTo(512, yEPLeftShape);
           context.arc(
-            512,
-            278,
+            initialXSPLeftShape,
+            282,
             60,
             (90 * Math.PI) / 180,
             (140 * Math.PI) / 180,

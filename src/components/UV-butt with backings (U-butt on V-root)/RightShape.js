@@ -9,8 +9,8 @@ function RightShape({
   jRightShape,
   hRightShape,
   ySPLeftShape,
-  radius,
-  initialXSP,
+  r,
+  initialXSPRightShape,
 }) {
   return (
     <Group>
@@ -49,7 +49,7 @@ function RightShape({
       <Line
         stroke={"green"}
         strokeWidth={2}
-        points={[608, ySPLeftShape, 913, ySPLeftShape]}
+        points={[initialXSPRightShape, ySPLeftShape, 913, ySPLeftShape]}
       />
       <Arrow
         points={[913, ySPLeftShape, 913, 456]}
@@ -71,19 +71,16 @@ function RightShape({
           context.lineTo(858, fRightShape);
           context.lineTo(857, 458);
           context.lineTo(561, 457);
-          context.lineTo(607, ySPLeftShape - 5);
           // context.arcTo(645, 349, 720, bRightShape, radius);
           // context.quadraticCurveTo(645, 349, 720, bRightShape);
           context.arc(
-            608,
-            282,
-            60,
+            initialXSPRightShape,
+            ySPLeftShape - r,
+            r,
             (90 * Math.PI) / 180,
             (40 * Math.PI) / 180,
             true
           );
-
-          // context.lineTo(720, bRightShape);
           context.closePath();
           context.fillStrokeShape(shape);
         }}
