@@ -6,6 +6,8 @@ import HU_butt from "./components/HU-butt(j-butt)at T-join/HU_butt";
 import DHU_buttT_join from "./components/DHU-butt at T-joint/DHU_buttT_join";
 import BellSeam from "./components/bell seam/BellSeam";
 import HV_butt from "./components/HV-butt at bevel joint/HV_butt";
+import DV_butt from "./components/DV-butt (X-butt)/DV_butt";
+import VV_butt from "./components/VV-butt (V-butt on V-root)/VV_butt";
 export default function App() {
   return (
     <>
@@ -17,6 +19,8 @@ export default function App() {
       {/*<DHU_buttT_join />*/}
       {/*<BellSeam />*/}
       {/*<HV_butt />*/}
+      {/*<DV_butt />*/}
+      {/*<VV_butt />*/}
     </>
   );
 }

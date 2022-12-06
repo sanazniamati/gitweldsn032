@@ -57,7 +57,7 @@ export default function UV_Butt() {
   //x start point for arc Left shape
   const initialXSPLeftShape =
     xAlfa - Math.tan((alfa1 * Math.PI) / 180) * initialH;
-
+  //x for additinal line
   const [xBeta, setXBeta] = useState(720);
   const handelIncT1 = () => {
     setBRightShape(bRightShape - 10);
@@ -66,17 +66,27 @@ export default function UV_Butt() {
     setJRightShape(jRightShape - 5);
     setKRightShape(kRightShape - 5);
   };
-  const handelDecT1 = () => {};
+  const handelDecT1 = () => {
+    setBRightShape(bRightShape + 10);
+    setFRightShape(fRightShape + 5);
+    setHRightShape(hRightShape + 5);
+    setJRightShape(jRightShape + 5);
+    setKRightShape(kRightShape + 5);
+  };
   const handelIncT2 = () => {
     setBLeftShape(bLeftShape - 10);
     setFLeftShape(fLeftShape - 5);
     setHLeftShape(hLeftShape - 5);
     setJLeftShape(jLeftShape - 5);
     setKLeftShape(kLeftShape - 5);
-    // setYCPLeftShape(yCPLeftShape - 5);
-    // setYEPLeftShape(yEPLeftShape - 5);
   };
-  const handelDecT2 = () => {};
+  const handelDecT2 = () => {
+    setBLeftShape(bLeftShape + 10);
+    setFLeftShape(fLeftShape + 5);
+    setHLeftShape(hLeftShape + 5);
+    setJLeftShape(jLeftShape + 5);
+    setKLeftShape(kLeftShape + 5);
+  };
   const handelIncBeta = () => {};
   const handelDecBeta = () => {};
   const handelIncAlfa = () => {
@@ -102,9 +112,9 @@ export default function UV_Butt() {
   return (
     <>
       <button onClick={handelIncT1}>t1 +</button>
-      {/*<button onClick={handelDecT1}>t1 -</button>*/}
+      <button onClick={handelDecT1}>t1 -</button>
       <button onClick={handelIncT2}> t2 +</button>
-      {/*<button onClick={handelDecT2}> t2 -</button>*/}
+      <button onClick={handelDecT2}> t2 -</button>
       <button onClick={handelIncH}> h + </button>
       <button onClick={handelDecH}> h - </button>
       <button onClick={handelIncR}> R + </button>
